@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "LevelUp",
+    "name": "Me",
     "slug": "LevelUp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.devanshj.LevelUp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e8426338-95e0-4949-b712-3ec82fc45fd8"
+      }
     }
   }
 }
