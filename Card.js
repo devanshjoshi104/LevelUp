@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Card = ({ id, name }) => {
+const Card = ({ id, name, deleteMode, setDeleteMode, handleBackgroundPress }) => {
   const [count, setCount] = useState(0);
   const [level, setLevel] = useState(1);
 
   useEffect(() => {
     const getCountFromStorage = async () => {
       try {
-        const storedCount = await AsyncStorage.getItem(`count_${id}`);
+        const storedCount = await AsyncStorage.getItem(`count_${name}`);
         if (storedCount !== null) {
           const parsedCount = parseInt(storedCount, 10);
           setCount(parsedCount);
@@ -45,7 +45,9 @@ const Card = ({ id, name }) => {
   };
 
   return (
-    <TouchableOpacity onPress={handlePress}>
+    <TouchableOpacity 
+    onPress={() => deleteMode ? handleBackgroundPress() : handlePress() }
+                onLongPress={() => setDeleteMode(true)}>
       <View style={styles.card}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.level}>Level: {level}</Text>
